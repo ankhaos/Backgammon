@@ -1,0 +1,190 @@
+﻿<Window x:Class="Backgammon.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:l="clr-namespace:Backgammon"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        mc:Ignorable="d"
+        Title="Длинные нарды" Height="650" Width="1000" ResizeMode="NoResize" Background="Peru">
+    <Window.DataContext>
+        <l:ViewModel/>
+    </Window.DataContext>
+
+    <Canvas x:Name="canvas">
+        <!-- Игровое поле -->
+        <Image x:Name="gameImage" 
+               Source="photo/field.png" 
+               Canvas.Left="258" Canvas.Top="39"
+               Width="484" Height="507" Panel.ZIndex="-1">
+        </Image>
+
+        <!-- Поле для фотографии игрока -->
+        <Image x:Name="playerImage" Source="{Binding Path=playerImage}"  Width="100" Height="100" Canvas.Left="77" Canvas.Top="96" RenderTransformOrigin="1,1"/>
+
+        <!-- Панели сброса -->
+        <Rectangle x:Name="blackdrop" Width="50" Canvas.Left="797" Canvas.Top="272"
+                   Stroke="Wheat" StrokeThickness="6" HorizontalAlignment="Left" Height="153" VerticalAlignment="Top">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="179.485"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FF843C24" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="whitedrop" Width="50" Canvas.Left="747" Canvas.Top="318"
+                   Stroke="Wheat" StrokeThickness="6" HorizontalAlignment="Center" VerticalAlignment="Top" Height="150">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FF843C24" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+
+        <!-- Фишки -->
+        <ItemsControl ItemsSource="{Binding _chips}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemContainerStyle>
+                <Style TargetType="ContentPresenter">
+                    <Setter Property="Canvas.Left" Value="{Binding Left, Mode=TwoWay}" />
+                    <Setter Property="Canvas.Top" Value="{Binding Top, Mode=TwoWay}" />
+                    <Setter Property="Panel.ZIndex" Value="{Binding ZIndex, Mode=TwoWay}" />
+                </Style>
+            </ItemsControl.ItemContainerStyle>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Ellipse Width="34" Height="35" StrokeThickness="3">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseLeftButtonDown">
+                                <i:InvokeCommandAction
+                            Command="{Binding ChipMouseLeftButtonDownCommand}"/>
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="MouseMove">
+                                <i:InvokeCommandAction
+                            Command="{Binding ChipMouseMoveCommand}" CommandParameter="{Binding}" />
+                            </i:EventTrigger>
+                            <i:EventTrigger EventName="MouseLeftButtonUp">
+                                <i:InvokeCommandAction
+                            Command="{Binding ChipMouseLeftButtonUpCommand}" CommandParameter="{Binding}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <Ellipse.Style>
+                            <Style TargetType="Ellipse">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Color}" Value="black">
+                                        <Setter Property="Ellipse.Stroke">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="Peru" Offset="0"/>
+                                                    <GradientStop Color="Peru" Offset="1"/>
+                                                    <GradientStop Color="#FF843C24" Offset="0.52"/>
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Setter Property="Ellipse.Fill">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="#FF151313" Offset="0"/>
+                                                    <GradientStop Color="#FF0F0909" Offset="0.195"/>
+                                                    <GradientStop Color="#FF0C0503" Offset="1"/>
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Color}" Value="white">
+                                        <Setter Property="Ellipse.Stroke">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="Peru" Offset="1"/>
+                                                    <GradientStop Color="#FFFAF0DC" Offset="1"/>
+                                                    <GradientStop Color="#FF843C24" Offset="0.103"/>
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                        <Setter Property="Ellipse.Fill">
+                                            <Setter.Value>
+                                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                    <GradientStop Color="Wheat" Offset="0.033"/>
+                                                    <GradientStop Color="White" Offset="0.93"/>
+                                                    <GradientStop Color="#FFDBD8D5" Offset="0"/>
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Ellipse.Style>
+                    </Ellipse>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <!-- Кнопка начала игры и текстовые поля-->
+        <Button x:Name="Start" Content="Начать новую игру" Canvas.Left="513" Canvas.Top="558" HorizontalAlignment="Center" VerticalAlignment="Top" Width="229" Height="35" Background="Tan" FontFamily="Arial Unicode MS" FontSize="18" BorderBrush="#FF843C24" Foreground="#FF843C24" Command="{Binding StartCommand}" Panel.ZIndex="-1"/>
+        <Label Content="Ход" Canvas.Left="99" Canvas.Top="249" FontFamily="Arial Unicode MS" FontSize="24" Foreground="#FF843C24" Panel.ZIndex="-1"/>
+        <Label Content="Возможные позиции" Canvas.Left="8" Canvas.Top="355" FontFamily="Arial Unicode MS" FontSize="24" Foreground="#FF843C24" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.499,1.106" Panel.ZIndex="-1"/>
+        <TextBox x:Name="Turn" Canvas.Left="29" TextWrapping="Wrap" Canvas.Top="301" Width="197" HorizontalAlignment="Left" Height="33" VerticalAlignment="Top" FontFamily="Arial Unicode MS" Background="Tan" SelectionBrush="#FF843C24" Foreground="#FF843C24" CaretBrush="#FF843C24" BorderBrush="#FF843C24" FontSize="18" TextAlignment="Center" IsEnabled="False"  Text="{Binding Path =Turn }" Panel.ZIndex="-1"/>
+        <TextBox x:Name="FuturePos" Canvas.Left="29" TextWrapping="Wrap" Canvas.Top="401" Width="197" Height="33" FontFamily="Arial Unicode MS" Background="Tan" SelectionBrush="#FF843C24" Foreground="#FF843C24" CaretBrush="#FF843C24" BorderBrush="#FF843C24" FontSize="18" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" IsEnabled="False"  Text="{Binding FuturePos}" Panel.ZIndex="-1"/>
+
+        <!-- Кубики-->
+        <Rectangle x:Name="Dice1" Width="35" Canvas.Left="594" Canvas.Top="314"
+            Stroke="#FF0C0C0C" StrokeThickness="2" Height="35" HorizontalAlignment="Center" VerticalAlignment="Top" Fill="#FFF8EFE7" Panel.ZIndex="-1">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="195.572"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <!-- Число на кубике -->
+        <TextBlock x:Name="Textondice1" Text="{Binding Textondice1}" FontSize="16" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Left="578" Canvas.Top="281" RenderTransformOrigin="0.5,0.5" Panel.ZIndex="-1">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="17.037"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+
+        <Rectangle x:Name="Dice2" Width="35" Canvas.Left="626" Canvas.Top="320"
+            Stroke="#FF0C0C0C" StrokeThickness="2" Height="35" Fill="#FFF8EFE7" HorizontalAlignment="Left" VerticalAlignment="Center" Panel.ZIndex="-1">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="215.257"/>
+                    <TranslateTransform X="-7.971" Y="2.836"/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <!-- Число на кубике -->
+        <TextBlock x:Name="Textondice2" Text="{Binding Textondice2}" FontSize="16" Foreground="Black" Canvas.Left="610" Canvas.Top="287" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" VerticalAlignment="Center" Panel.ZIndex="-1">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="36.722"/>
+                    <TranslateTransform X="0.243" Y="0.205"/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+    </Canvas>
+</Window>

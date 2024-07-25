@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Backgammon.GameModel" Collapsed="true">
+    <Position X="3" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABgASDIAAIgAAAAAACCCqEAAAAAAAAAAggUAARACABQ=</HashCode>
+      <FileName>Model\GameModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Backgammon.MonteCarloTS" Collapsed="true">
+    <Position X="5.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAACAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\MonteCarloTS.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Backgammon.Move" Collapsed="true">
+    <Position X="3" Y="2.25" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAIAAAAAAAAAMAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\Move.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Backgammon.Node" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAQAAQAAIAAEAAAAAAFSABQAAAAAAAAAAIAFgAAAAA=</HashCode>
+      <FileName>Model\Node.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Backgammon.ViewModel" Collapsed="true">
+    <Position X="1.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAKCAgCAAqABgYgCDIMIggAjIRBALIABQAAABQCQ=</HashCode>
+      <FileName>ViewModels\ViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Backgammon.ViewModels.Chips" Collapsed="true">
+    <Position X="4.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABIAAAEDAEOAAAQIACAAIAAgAAJAAgBCAAAgCBAAAA=</HashCode>
+      <FileName>ViewModels\Chips.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Backgammon.ViewModels.CongratsViewModel" Collapsed="true">
+    <Position X="6.75" Y="2.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAACAAAAAAIADAAAAAhAAAAAAAIAAAAAABCAA=</HashCode>
+      <FileName>ViewModels\CongratsViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Backgammon.ViewModels.DefinePlayerViewModel" Collapsed="true">
+    <Position X="2.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAIAAACAAAgAAAAAAIAAABAQAACAA=</HashCode>
+      <FileName>ViewModels\DefinePlayerViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Backgammon.ViewModels.NewGameViewModel" Collapsed="true">
+    <Position X="0.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EEAAAAAAAAAQAAAAIAAAAAAAgCAAAAAQAAAAAAAACAA=</HashCode>
+      <FileName>ViewModels\NewGameViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Backgammon.Positions" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAIQAAAAAAAAAAAAAABCAAAAAAAAAAAAAYAA=</HashCode>
+      <FileName>ViewModels\Positions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Backgammon.ViewModels.RelayCommand" Collapsed="true">
+    <Position X="7.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAQAAEAEAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\RelayCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
